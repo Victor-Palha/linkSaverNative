@@ -36,6 +36,12 @@ class LinkStorage {
         }
         return storage.filter(link => link.category === category)
     }
+
+    public static async deleteLink(id: string): Promise<void> {
+        const storage = await this.get()
+        const updatedStorage = storage.filter(link => link.id !== id)
+        await AsyncStorage.setItem(this.storageKey, JSON.stringify(updatedStorage))
+    }
 }
 
 export { LinkStorage }

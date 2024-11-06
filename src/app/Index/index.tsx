@@ -71,6 +71,7 @@ export default function Index(){
                 modalIsOpen={modalIsOpen}
                 closeModal={setModalIsOpen}
                 selectedLink={selectedLink}
+                reloadLinks={getLinks}
             />
         </View>
     )
