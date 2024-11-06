@@ -1,3 +1,4 @@
+import { Button } from "@/src/components/button";
 import { Categories } from "@/src/components/categories";
 import { Input } from "@/src/components/input";
 import { colors } from "@/src/styles/colors";
@@ -23,6 +24,7 @@ export default function Add(){
             <View className="gap-5 p-[24]">
                 <Input placeholder="Name"/>
                 <Input placeholder="URL" textContentType="URL"/>
+                <Button title="Add"/>
             </View>
         </View>
     )
