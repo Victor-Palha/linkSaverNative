@@ -7,42 +7,10 @@ Link Saver - Native is a mobile application designed to help users save, categor
 
 Here are some screenshots of the Link Saver - Native app:
 
-<style>
-    .image-gallery {
-        display: flex;
-        gap: 10px;
-    }
-    .image-gallery img {
-        max-width: 80%;
-        height: auto;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        padding: 5px;
-    }
-    .image-gallery div {
-        flex: 1 1 calc(33.333% - 20px);
-        box-sizing: border-box;
-    }
-</style>
-
-<div class="image-gallery">
-    <div>
-        <h4>Loading Screen</h4>
-        <img src="./docs/loading.jpeg" alt="Loading Screen">
-    </div>
-    <div>
-        <h4>Home Screen</h4>
-        <img src="./docs/home.jpeg" alt="Home Screen">
-    </div>
-    <div>
-        <h4>Add Link</h4>
-        <img src="./docs/add-link.jpeg" alt="Add Link">
-    </div>
-    <div>
-        <h4>View Links</h4>
-        <img src="./docs/modal.jpeg" alt="View Links">
-    </div>
-</div>
+![Loading Screen](./docs/loading.png)
+![Home Screen](./docs/home.png)
+![Add Link](./docs/add-link.png)
+![View Links](./docs/modal.png)
 
 ## Features
 
