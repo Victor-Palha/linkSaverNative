@@ -3,6 +3,7 @@ import {MaterialIcons} from "@expo/vector-icons"
 import { colors } from "@/src/styles/colors";
 import { Categories } from "@/src/components/categories";
 import { Link } from "@/src/components/link";
+import { Option } from "@/src/components/option";
 export default function Index(){
     return (
         <View className="flex flex-1 pt-[62]">
@@ -42,6 +43,11 @@ export default function Index(){
 
                         <Text className="text-lg font-bold text-gray-200">Modal Name</Text>
                         <Text className="text-sm text-gray-400">Modal Link</Text>
+
+                        <View className="flex-row items-center justify-around mt-[32] border-t-2 border-gray-600 pt-[10]">
+                            <Option name="Delete" icon="delete" variant="SECONDARY" onPress={() => {}}/>
+                            <Option name="Open" icon="language" onPress={() => {}}/>
+                        </View>
                     </View>
                 </View>
             </Modal>
