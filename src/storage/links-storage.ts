@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-type LinkStorageProps = {
+export type LinkStorageProps = {
     id: string;
     name: string;
     url: string;

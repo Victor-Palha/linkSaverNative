@@ -1,13 +1,14 @@
-import { categories } from "@/src/utils/categories";
+import { categories, CategoriesListProps } from "@/src/utils/categories";
 import { FlatList } from "react-native";
 import { Category } from "../category";
 
 type CategoriesProps = {
+    categories: CategoriesListProps[]
     selected: string
     onChange: (categoryName: string) => void
 }
 
-export function Categories({selected, onChange}: CategoriesProps){
+export function Categories({selected, onChange, categories}: CategoriesProps){
     return (
         <FlatList
             className="h-[52] max-h-[52]"

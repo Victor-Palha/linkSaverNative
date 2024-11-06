@@ -3,6 +3,7 @@ import { Categories } from "@/src/components/categories";
 import { Input } from "@/src/components/input";
 import { LinkStorage } from "@/src/storage/links-storage";
 import { colors } from "@/src/styles/colors";
+import { categoriesAdd } from "@/src/utils/categories";
 import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { useState } from "react";
@@ -55,6 +56,7 @@ export default function Add(){
             <Categories
                 onChange={setCategory}
                 selected={category}
+                categories={categoriesAdd}
             />
 
             <View className="gap-5 p-[24]">

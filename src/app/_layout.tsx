@@ -1,6 +1,6 @@
 import { colors } from "../styles/colors"
 import "../styles/global.css"
-import { Slot, Stack } from "expo-router"
+import { Stack } from "expo-router"
 
 export default function Layout(){
     const backgroundColor = colors.gray[950]
