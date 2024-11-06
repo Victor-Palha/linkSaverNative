@@ -33,7 +33,9 @@ export default function Add(){
                 category
             })
 
-            Alert.alert("Success", "Link added successfully")
+            Alert.alert("Success", "Link added successfully", [
+                {text: "OK", onPress: ()=>router.back()}
+            ])
 
         }catch(error){
             console.error(error)
