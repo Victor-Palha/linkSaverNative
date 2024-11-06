@@ -18,6 +18,7 @@ export default function Index(){
             <Category
                 icon={"code"}
                 name={"Development"}
+                isSelected={true}
             />
         </View>
     )
