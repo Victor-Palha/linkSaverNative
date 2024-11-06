@@ -28,6 +28,14 @@ class LinkStorage {
             throw error
         }
     }
+
+    public static async getByCategory(category: string): Promise<LinkStorageProps[]> {
+        const storage = await this.get()
+        if(category === "All"){
+            return storage
+        }
+        return storage.filter(link => link.category === category)
+    }
 }
 
 export { LinkStorage }

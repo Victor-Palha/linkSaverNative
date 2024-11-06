@@ -8,14 +8,22 @@ import { router, useFocusEffect } from "expo-router";
 import { useCallback, useEffect, useState } from "react";
 import { LinkStorage, LinkStorageProps } from "@/src/storage/links-storage";
 import { categories } from "@/src/utils/categories";
+import { ModalLink } from "@/src/components/modal";
 
 export default function Index(){
+    const [selectedLink, setSelectedLink] = useState<LinkStorageProps>()
     const [links, setLinks] = useState<LinkStorageProps[]>([])
     const [category, setCategory] = useState(categories[0].name)
+    const [modalIsOpen, setModalIsOpen] = useState(false)
+
+    function handleDetails(selectedLink: LinkStorageProps){
+        setModalIsOpen(!modalIsOpen)
+        setSelectedLink(selectedLink)
+    }
 
     async function getLinks(){
         try {
-            const storage = await LinkStorage.get()
+            const storage = await LinkStorage.getByCategory(category)
             setLinks(storage)
         }catch(error){
             console.error(error)
@@ -51,9 +59,7 @@ export default function Index(){
                     <Link 
                         name={item.name}
                         link={item.url}
-                        onDetails={() => {
-                            console.log("Details")
-                        }}
+                        onDetails={()=>handleDetails(item)}
                     />
                 )}
                 showsVerticalScrollIndicator={false}
@@ -61,26 +67,11 @@ export default function Index(){
                 contentContainerClassName="gap-[20] p-[24] pb-[100]"
             />
 
-            <Modal transparent visible={false}>
-                <View className="flex-1 justify-end"> 
-                    <View className="bg-gray-900 border-t-2 border-gray-800 pb-[52] p-[24]"> 
-                        <View className="w-full flex-row justify-between items-center mb-[32]"> 
-                            <Text className="text-base font-semibold text-gray-400">Modal Header</Text>
-                            <TouchableOpacity>
-                                <MaterialIcons name="close" size={20} color={colors.gray[400]}/>
-                            </TouchableOpacity>
-                        </View>
-
-                        <Text className="text-lg font-bold text-gray-200">Modal Name</Text>
-                        <Text className="text-sm text-gray-400">Modal Link</Text>
-
-                        <View className="flex-row items-center justify-around mt-[32] border-t-2 border-gray-600 pt-[10]">
-                            <Option name="Delete" icon="delete" variant="SECONDARY" onPress={() => {}}/>
-                            <Option name="Open" icon="language" onPress={() => {}}/>
-                        </View>
-                    </View>
-                </View>
-            </Modal>
+            <ModalLink
+                modalIsOpen={modalIsOpen}
+                closeModal={setModalIsOpen}
+                selectedLink={selectedLink}
+            />
         </View>
     )
 }
