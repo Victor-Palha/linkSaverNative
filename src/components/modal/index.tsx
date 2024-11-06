@@ -1,5 +1,5 @@
 import { MaterialIcons } from "@expo/vector-icons";
-import { Alert, Modal, Text, TouchableOpacity, View } from "react-native";
+import { Alert, Linking, Modal, Text, TouchableOpacity, View } from "react-native";
 import { Option } from "../option";
 import { LinkStorage, LinkStorageProps } from "@/src/storage/links-storage";
 import { colors } from "@/src/styles/colors";
@@ -12,6 +12,13 @@ type ModalLinkProps = {
 }
 
 export function ModalLink({modalIsOpen, closeModal, selectedLink, reloadLinks}: ModalLinkProps){
+    async function handleOpenLink(){
+        try {
+            await Linking.openURL(selectedLink?.url as string)
+        } catch (error) {
+            Alert.alert("Error", "An error occurred while opening the link")
+        }
+    }
     function handleDelete(id: string){
         Alert.alert("Delete", "Are you sure you want to delete this link?", [
             {
@@ -53,7 +60,7 @@ export function ModalLink({modalIsOpen, closeModal, selectedLink, reloadLinks}: 
 
                 <View className="flex-row items-center justify-around mt-[32] border-t-2 border-gray-600 pt-[10]">
                     <Option name="Delete" icon="delete" variant="SECONDARY" onPress={() => handleDelete(selectedLink?.id as string)}/>
-                    <Option name="Open" icon="language" onPress={() => {}}/>
+                    <Option name="Open" icon="language" onPress={handleOpenLink}/>
                 </View>
             </View>
         </View>
