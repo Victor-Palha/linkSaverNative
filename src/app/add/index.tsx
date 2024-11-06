@@ -1,6 +1,7 @@
 import { Button } from "@/src/components/button";
 import { Categories } from "@/src/components/categories";
 import { Input } from "@/src/components/input";
+import { LinkStorage } from "@/src/storage/links-storage";
 import { colors } from "@/src/styles/colors";
 import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
@@ -12,7 +13,7 @@ export default function Add(){
     const [name, setName] = useState("")
     const [url, setUrl] = useState("")
 
-    function handleAdd(){
+    async function handleAdd(){
         if(!category){
             return Alert.alert("Category", "Please select a category")
         }
@@ -22,7 +23,21 @@ export default function Add(){
         if(!url.trim()){
             return Alert.alert("URL", "Please enter a URL")
         }
-        console.log(name, url)
+
+        try{
+            await LinkStorage.add({
+                id: Date.now().toString(),
+                name,
+                url,
+                category
+            })
+
+            Alert.alert("Success", "Link added successfully")
+
+        }catch(error){
+            console.error(error)
+            return Alert.alert("Error", "An error occurred while adding the link")
+        }
     }
 
     return (
@@ -44,7 +59,7 @@ export default function Add(){
 
             <View className="gap-5 p-[24]">
                 <Input placeholder="Name" onChangeText={setName} autoCorrect={false}/>
-                <Input placeholder="URL" onChangeText={setUrl} textContentType="URL" autoCorrect={false}/>
+                <Input placeholder="URL" onChangeText={setUrl} textContentType="URL" autoCorrect={false} autoCapitalize="none"/>
                 <Button title="Add" onPress={handleAdd}/>
             </View>
         </View>
