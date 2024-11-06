@@ -5,7 +5,7 @@ import { colors } from "@/src/styles/colors";
 import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { useState } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Alert, Text, TouchableOpacity, View } from "react-native";
 
 export default function Add(){
     const [category, setCategory] = useState("")
@@ -13,6 +13,15 @@ export default function Add(){
     const [url, setUrl] = useState("")
 
     function handleAdd(){
+        if(!category){
+            return Alert.alert("Category", "Please select a category")
+        }
+        if(!name.trim()){
+            return Alert.alert("Name", "Please enter a name")
+        }
+        if(!url.trim()){
+            return Alert.alert("URL", "Please enter a URL")
+        }
         console.log(name, url)
     }
 
