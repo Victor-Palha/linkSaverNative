@@ -15,7 +15,10 @@ export default function Index(){
                 </TouchableOpacity>
             </View>
 
-            <Category/>
+            <Category
+                icon={"code"}
+                name={"Development"}
+            />
         </View>
     )
 }
