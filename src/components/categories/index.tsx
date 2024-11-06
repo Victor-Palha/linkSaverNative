@@ -2,7 +2,12 @@ import { categories } from "@/src/utils/categories";
 import { FlatList } from "react-native";
 import { Category } from "../category";
 
-export function Categories(){
+type CategoriesProps = {
+    selected: string
+    onChange: (categoryName: string) => void
+}
+
+export function Categories({selected, onChange}: CategoriesProps){
     return (
         <FlatList
             className="h-[52] max-h-[52]"
@@ -12,7 +17,8 @@ export function Categories(){
                 <Category 
                     name={item.name}
                     icon={item.icon}
-                    isSelected={false}
+                    isSelected={selected === item.name}
+                    onPress={()=>onChange(item.name)}
                 />
             }
             horizontal

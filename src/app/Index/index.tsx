@@ -5,7 +5,9 @@ import { Categories } from "@/src/components/categories";
 import { Link } from "@/src/components/link";
 import { Option } from "@/src/components/option";
 import { router } from "expo-router";
+import { useState } from "react";
 export default function Index(){
+    const [category, setCategory] = useState("")
     return (
         <View className="flex flex-1 pt-[62]">
             <View className="pl-[24] flex-row justify-between items-center mb-[32]">
@@ -18,7 +20,10 @@ export default function Index(){
                 </TouchableOpacity>
             </View>
 
-            <Categories/>
+            <Categories
+                onChange={setCategory}
+                selected={category}
+            />
             <FlatList
                 data={[1, 2, 3, 4, 5]}
                 keyExtractor={item => item.toString()}
