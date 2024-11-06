@@ -1,4 +1,5 @@
 import { Categories } from "@/src/components/categories";
+import { Input } from "@/src/components/input";
 import { colors } from "@/src/styles/colors";
 import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
@@ -18,6 +19,11 @@ export default function Add(){
                 Select a category
             </Text>
             <Categories/>
+
+            <View className="gap-5 p-[24]">
+                <Input placeholder="Name"/>
+                <Input placeholder="URL" textContentType="URL"/>
+            </View>
         </View>
     )
 }
